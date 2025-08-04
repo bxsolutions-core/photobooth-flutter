@@ -133,11 +133,11 @@ class Camera {
     divElement = html.DivElement()
       ..style.setProperty('object-fit', 'cover')
       ..append(videoElement);
-    // ignore: avoid_dynamic_calls
-    ui.platformViewRegistry.registerViewFactory(
-      _getViewType(textureId),
-      (_) => divElement,
-    );
+
+    // ui.platformViewRegistry.registerViewFactory(
+    //   _getViewType(textureId),
+    //   (_) => divElement,
+    // );
 
     final stream = await _getMediaStream();
     videoElement

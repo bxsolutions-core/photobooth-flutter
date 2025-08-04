@@ -11,7 +11,7 @@ class MockAnimationController extends Mock implements AnimationController {}
 
 class MockCanvas extends Mock implements Canvas {}
 
-class MockPaint extends Mock implements Paint {}
+class MockPaint extends Mock {}
 
 class RectFake extends Fake implements Rect {}
 

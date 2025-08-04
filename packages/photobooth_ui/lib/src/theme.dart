@@ -137,8 +137,8 @@ class PhotoboothTheme {
     );
   }
 
-  static DialogTheme get _dialogTheme {
-    return DialogTheme(
+  static DialogThemeData get _dialogTheme {
+    return DialogThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -154,8 +154,8 @@ class PhotoboothTheme {
     );
   }
 
-  static TabBarTheme get _tabBarTheme {
-    return const TabBarTheme(
+  static TabBarThemeData get _tabBarTheme {
+    return const TabBarThemeData(
       indicator: UnderlineTabIndicator(
         borderSide: BorderSide(
           width: 2,

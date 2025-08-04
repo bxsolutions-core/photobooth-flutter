@@ -39,7 +39,7 @@ enum AnimationMode {
   loop,
 
   /// Animations plays immediately once
-  oneTime
+  oneTime,
 }
 
 /// {@template animated_sprite}
@@ -82,6 +82,8 @@ extension on _AnimatedSpriteStatus {
 class _AnimatedSpriteState extends State<AnimatedSprite> {
   late SpriteSheet _spriteSheet;
   late SpriteAnimation _animation;
+  late SpriteAnimationTicker _animationTicker;
+
   Timer? _timer;
   var _status = _AnimatedSpriteStatus.loading;
   var _isPlaying = false;
@@ -95,6 +97,7 @@ class _AnimatedSpriteState extends State<AnimatedSprite> {
   @override
   void dispose() {
     _timer?.cancel();
+    _animationTicker.onComplete!();
     super.dispose();
   }
 
@@ -110,6 +113,8 @@ class _AnimatedSpriteState extends State<AnimatedSprite> {
         to: widget.sprites.frames,
         loop: widget.mode == AnimationMode.loop,
       );
+      _animationTicker = SpriteAnimationTicker(_animation);
+      _animationTicker.onStart!();
 
       setState(() {
         _status = _AnimatedSpriteStatus.loaded;
@@ -137,7 +142,11 @@ class _AnimatedSpriteState extends State<AnimatedSprite> {
           : const SizedBox(),
       secondChild: SizedBox.expand(
         child: _status.isLoaded
-            ? SpriteAnimationWidget(animation: _animation, playing: _isPlaying)
+            ? SpriteAnimationWidget(
+                animation: _animation,
+                animationTicker: _animationTicker,
+                playing: _isPlaying,
+              )
             : const SizedBox(),
       ),
       crossFadeState: _status.isLoaded
