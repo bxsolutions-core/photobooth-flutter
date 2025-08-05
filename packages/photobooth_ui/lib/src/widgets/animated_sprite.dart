@@ -114,7 +114,6 @@ class _AnimatedSpriteState extends State<AnimatedSprite> {
         loop: widget.mode == AnimationMode.loop,
       );
       _animationTicker = SpriteAnimationTicker(_animation);
-      _animationTicker.onStart!();
 
       setState(() {
         _status = _AnimatedSpriteStatus.loaded;

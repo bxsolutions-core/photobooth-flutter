@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'dart:ui_web' as ui;
 import 'dart:html' as html;
-import 'dart:ui' as ui;
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:camera_platform_interface/camera_platform_interface.dart';
 import 'package:camera_web/camera_web.dart';
@@ -134,10 +135,12 @@ class Camera {
       ..style.setProperty('object-fit', 'cover')
       ..append(videoElement);
 
-    // ui.platformViewRegistry.registerViewFactory(
-    //   _getViewType(textureId),
-    //   (_) => divElement,
-    // );
+    if (kIsWeb) {
+      ui.platformViewRegistry.registerViewFactory(
+        _getViewType(textureId),
+        (_) => divElement,
+      );
+    }
 
     final stream = await _getMediaStream();
     videoElement

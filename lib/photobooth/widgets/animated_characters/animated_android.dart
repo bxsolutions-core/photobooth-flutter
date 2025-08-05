@@ -4,7 +4,7 @@ import 'package:photobooth_ui/photobooth_ui.dart';
 class AnimatedAndroid extends AnimatedSprite {
   const AnimatedAndroid({super.key})
       : super(
-          loadingIndicatorColor: PhotoboothColors.green,
+          loadingIndicatorColor: PhotoboothColors.peridotGreen,
           sprites: const Sprites(
             asset: 'android_spritesheet.png',
             size: Size(450, 658),

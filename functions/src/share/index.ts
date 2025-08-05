@@ -27,10 +27,9 @@ const BaseHTMLContext: Record<string, string | Record<string, string>> = {
     fixedPhotosRight: bucketPathForFile('public/table-photos-right.png'),
   },
   meta: {
-    title: 'Google I/O Photo Booth',
+    title: 'Photo Booth',
     desc: (
-      'Take a photo in the I/O Photo Booth with your favorite Google Developer Mascots! ' +
-      'Built with Flutter & Firebase for Google I/O 2021.'
+      'Take a photo in the I/O Photo Booth and add your your favorite sticker!'
     ),
   },
   footer: footerTmpl,
