@@ -42,6 +42,6 @@ abstract class PhotoboothColors {
   static const Color dorcoRed = Color(0xFFE10600);
   /// SLEEK
   static const Color peridotGreen = Color(0xFF00AB4E);
+  static const Color plantationGreen = Color(0xFF21564F);
   static const Color darkForestGreen = Color(0xFF1D3725);
-  static const Color plantationGreen = Color(0xFF21564f);
 }

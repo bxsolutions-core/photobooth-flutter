@@ -1,5 +1,5 @@
 /// A UI library for the Photobooth app.
-library photobooth_ui;
+library;
 
 export 'package:flame/flame.dart' show Flame;
 

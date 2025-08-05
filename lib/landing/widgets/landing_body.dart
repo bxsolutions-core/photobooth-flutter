@@ -16,6 +16,15 @@ class LandingBody extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 48),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 48),
+            child: Image.asset(
+              'assets/backgrounds/dorco_logo_eng_red.png',
+              width: size.height <= PhotoboothBreakpoints.small
+                  ? size.width * 0.4
+                  : size.width * 0.5,
+            ),
+          ),
           SelectableText(
             l10n.landingPageHeading,
             key: const Key('landingPage_heading_text'),
@@ -32,15 +41,15 @@ class LandingBody extends StatelessWidget {
           const SizedBox(height: 24),
           const LandingTakePhotoButton(),
           const SizedBox(height: 48),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Image.asset(
-              'assets/backgrounds/landing_background.png',
-              height: size.width <= PhotoboothBreakpoints.small
-                  ? size.height * 0.4
-                  : size.height * 0.5,
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 48),
+          //   child: Image.asset(
+          //     'assets/backgrounds/landing_background.png',
+          //     height: size.width <= PhotoboothBreakpoints.small
+          //         ? size.height * 0.4
+          //         : size.height * 0.5,
+          //   ),
+          // ),
         ],
       ),
     );

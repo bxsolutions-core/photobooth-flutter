@@ -1,4 +1,4 @@
-library camera;
+library;
 
 import 'package:camera_platform_interface/camera_platform_interface.dart';
 import 'package:flutter/widgets.dart';

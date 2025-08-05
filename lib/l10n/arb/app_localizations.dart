@@ -117,7 +117,7 @@ abstract class AppLocalizations {
   /// Heading shown on the landing page.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to the I∕O Photo Booth'**
+  /// **'DORCO'**
   String get landingPageHeading;
 
   /// Subheading shown on the landing page.

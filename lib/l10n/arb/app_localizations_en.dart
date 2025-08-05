@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get landingPageHeading => 'Welcome to the I∕O Photo Booth';
+  String get landingPageHeading => 'DORCO';
 
   @override
   String get landingPageSubheading =>
