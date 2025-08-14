@@ -102,13 +102,13 @@ class PhotoboothPreview extends StatelessWidget {
             },
           ),
         ),
-        const Align(
-          alignment: Alignment.bottomLeft,
-          child: Padding(
-            padding: EdgeInsets.only(left: 16, bottom: 24),
-            child: MadeWithIconLinks(),
-          ),
-        ),
+        // const Align(
+        //   alignment: Alignment.bottomLeft,
+        //   child: Padding(
+        //     padding: EdgeInsets.only(left: 16, bottom: 24),
+        //     child: MadeWithIconLinks(),
+        //   ),
+        // ),
         for (final character in state.characters)
           DraggableResizable(
             key: Key(
@@ -124,7 +124,7 @@ class PhotoboothPreview extends StatelessWidget {
             size: _getAnimatedSpriteSize(character.asset.name),
             child: _AnimatedCharacter(name: character.asset.name),
           ),
-        CharactersIconLayout(children: children),
+
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(

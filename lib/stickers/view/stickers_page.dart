@@ -52,13 +52,13 @@ class StickersView extends StatelessWidget {
                     child: ColoredBox(color: PhotoboothColors.black),
                   ),
                   if (image != null) PreviewImage(data: image.data),
-                  const Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 16, bottom: 24),
-                      child: MadeWithIconLinks(),
-                    ),
-                  ),
+                  // const Align(
+                  //   alignment: Alignment.bottomLeft,
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(left: 16, bottom: 24),
+                  //     child: MadeWithIconLinks(),
+                  //   ),
+                  // ),
                   const CharactersLayer(),
                   const _DraggableStickers(),
                   const Positioned(
