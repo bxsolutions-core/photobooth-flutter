@@ -97,15 +97,20 @@ class _PhotoboothViewState extends State<PhotoboothView> {
     final aspectRatio = orientation == Orientation.portrait
         ? PhotoboothAspectRatio.portrait
         : PhotoboothAspectRatio.landscape;
+
+    debugPrint('here:$orientation');
     return Scaffold(
+      extendBody: true,
       body: _PhotoboothBackground(
         aspectRatio: aspectRatio,
+        onSnapPressed: () => _onSnapPressed(aspectRatio: aspectRatio),
         child: Camera(
           controller: _controller,
           placeholder: (_) => const SizedBox(),
           preview: (context, preview) => PhotoboothPreview(
             preview: preview,
             onSnapPressed: () => _onSnapPressed(aspectRatio: aspectRatio),
+            aspectRatio: aspectRatio,
           ),
           error: (context, error) => PhotoboothError(error: error),
         ),
@@ -117,26 +122,34 @@ class _PhotoboothViewState extends State<PhotoboothView> {
 class _PhotoboothBackground extends StatelessWidget {
   const _PhotoboothBackground({
     required this.aspectRatio,
+    required this.onSnapPressed,
     required this.child,
   });
 
   final double aspectRatio;
+  final VoidCallback onSnapPressed;
   final Widget child;
+
 
   @override
   Widget build(BuildContext context) {
     return Stack(
+      fit: StackFit.expand,
       children: [
         const PhotoboothBackground(),
-        Center(
-          child: AspectRatio(
-            aspectRatio: aspectRatio,
-            child: ColoredBox(
-              color: PhotoboothColors.black,
-              child: child,
-            ),
-          ),
-        ),
+        // Center(
+        //   child: Padding(
+        //     padding: const EdgeInsetsGeometry.fromLTRB(20, 0, 20, 0),
+        //     child: AspectRatio(
+        //       aspectRatio: aspectRatio,
+        //       child: ColoredBox(
+        //         color: PhotoboothColors.peridotGreen,
+        //         child: child,
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        child,
       ],
     );
   }

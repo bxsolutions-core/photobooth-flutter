@@ -9,11 +9,20 @@ class PhotoboothBackground extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
+
         Image.asset(
           'assets/backgrounds/photobooth_background.jpg',
           repeat: ImageRepeat.repeat,
           filterQuality: FilterQuality.high,
-        )
+        ),
+
+        Align(
+          alignment: Alignment.topCenter,
+          child: Image.asset(
+            'assets/backgrounds/header_logo.png',
+            filterQuality: FilterQuality.high,
+          ),
+        ),
       ],
     );
   }

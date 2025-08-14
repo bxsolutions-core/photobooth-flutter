@@ -14,86 +14,42 @@ class PhotoboothPreview extends StatelessWidget {
   const PhotoboothPreview({
     required this.preview,
     required this.onSnapPressed,
+    required this.aspectRatio,
     super.key,
   });
 
   final Widget preview;
   final VoidCallback onSnapPressed;
+  final double aspectRatio;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final state = context.watch<PhotoboothBloc>().state;
-    final children = <Widget>[
-      CharacterIconButton(
-        key: const Key('photoboothView_dash_characterIconButton'),
-        icon: const AssetImage('assets/icons/dash_icon.png'),
-        label: l10n.dashButtonLabelText,
-        isSelected: state.isDashSelected,
-        onPressed: () {
-          trackEvent(
-            category: 'button',
-            action: 'click-add-friend',
-            label: 'add-dash-friend',
-          );
-          context
-              .read<PhotoboothBloc>()
-              .add(const PhotoCharacterToggled(character: Assets.dash));
-        },
-      ),
-      CharacterIconButton(
-        key: const Key('photoboothView_sparky_characterIconButton'),
-        icon: const AssetImage('assets/icons/sparky_icon.png'),
-        label: l10n.sparkyButtonLabelText,
-        isSelected: state.isSparkySelected,
-        onPressed: () {
-          trackEvent(
-            category: 'button',
-            action: 'click-add-friend',
-            label: 'add-sparky-friend',
-          );
-          context
-              .read<PhotoboothBloc>()
-              .add(const PhotoCharacterToggled(character: Assets.sparky));
-        },
-      ),
-      CharacterIconButton(
-        key: const Key('photoboothView_android_characterIconButton'),
-        icon: const AssetImage('assets/icons/android_icon.png'),
-        label: l10n.androidButtonLabelText,
-        isSelected: state.isAndroidSelected,
-        onPressed: () {
-          trackEvent(
-            category: 'button',
-            action: 'click-add-friend',
-            label: 'add-bugdroid-friend',
-          );
-          context
-              .read<PhotoboothBloc>()
-              .add(const PhotoCharacterToggled(character: Assets.android));
-        },
-      ),
-      CharacterIconButton(
-        key: const Key('photoboothView_dino_characterIconButton'),
-        icon: const AssetImage('assets/icons/dino_icon.png'),
-        label: l10n.dinoButtonLabelText,
-        isSelected: state.isDinoSelected,
-        onPressed: () {
-          trackEvent(
-            category: 'button',
-            action: 'click-add-friend',
-            label: 'add-dino-friend',
-          );
-          context
-              .read<PhotoboothBloc>()
-              .add(const PhotoCharacterToggled(character: Assets.dino));
-        },
-      ),
-    ];
     return Stack(
       fit: StackFit.expand,
       children: [
-        preview,
+        Center(
+          child: Padding(
+            padding: const EdgeInsetsGeometry.fromLTRB(20, 0, 20, 0),
+            child: AspectRatio(
+              aspectRatio: aspectRatio,
+              child: ColoredBox(
+                color: PhotoboothColors.peridotGreen,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: PhotoboothColors.peridotGreen,
+                      borderRadius: BorderRadius.circular(12), // same radius
+                      // If you set only borderRadius here, it's fine if Container has a color
+                    ),
+                    child: preview,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+
         Positioned.fill(
           child: GestureDetector(
             key: const Key('photoboothPreview_background_gestureDetector'),
@@ -102,33 +58,11 @@ class PhotoboothPreview extends StatelessWidget {
             },
           ),
         ),
-        // const Align(
-        //   alignment: Alignment.bottomLeft,
-        //   child: Padding(
-        //     padding: EdgeInsets.only(left: 16, bottom: 24),
-        //     child: MadeWithIconLinks(),
-        //   ),
-        // ),
-        for (final character in state.characters)
-          DraggableResizable(
-            key: Key(
-              '''photoboothPreview_${character.asset.name}_draggableResizableAsset''',
-            ),
-            canTransform: character.id == state.selectedAssetId,
-            onUpdate: (update) {
-              context.read<PhotoboothBloc>().add(
-                    PhotoCharacterDragged(character: character, update: update),
-                  );
-            },
-            constraints: _getAnimatedSpriteConstraints(character.asset.name),
-            size: _getAnimatedSpriteSize(character.asset.name),
-            child: _AnimatedCharacter(name: character.asset.name),
-          ),
 
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 30),
+            padding: const EdgeInsets.only(bottom: 8),
             child: ShutterButton(
               key: const Key('photoboothPreview_photo_shutterButton'),
               onCountdownComplete: onSnapPressed,
@@ -226,7 +160,7 @@ class LandscapeCharactersIconLayout extends StatelessWidget {
                   children: children,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -264,7 +198,7 @@ class PortraitCharactersIconLayout extends StatelessWidget {
               if (state.isAnyCharacterSelected) return const SizedBox();
               return const CharactersCaption();
             },
-          )
+          ),
         ],
       ),
     );
