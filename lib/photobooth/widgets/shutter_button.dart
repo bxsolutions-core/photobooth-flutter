@@ -135,8 +135,8 @@ class CameraButton extends StatelessWidget {
           onTap: onPressed,
           child: Image.asset(
             'assets/icons/camera_button_icon.png',
-            height: 100,
-            width: 100,
+            height: 64,
+            width: 64,
           ),
         ),
       ),

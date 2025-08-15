@@ -197,7 +197,7 @@ class _RetakeButton extends StatelessWidget {
         },
         verticalOffset: 50,
         message: l10n.retakeButtonTooltip,
-        child: Image.asset('assets/icons/retake_button_icon.png', height: 100),
+        child: Image.asset('assets/icons/retake_button_icon.png', height: 64, width: 64),
       ),
     );
   }
@@ -232,7 +232,8 @@ class _NextButton extends StatelessWidget {
           },
           child: Image.asset(
             'assets/icons/go_next_button_icon.png',
-            height: 100,
+            height: 64,
+            width: 64,
           ),
         ),
       ),
@@ -457,7 +458,8 @@ class _OpenStickersButtonState extends State<OpenStickersButton> {
         verticalOffset: 50,
         child: Image.asset(
           'assets/icons/stickers_button_icon.png',
-          height: 100,
+          height: 64,
+          width: 64,
         ),
       ),
     );

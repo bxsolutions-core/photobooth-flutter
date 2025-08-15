@@ -62,7 +62,7 @@ class PhotoboothPreview extends StatelessWidget {
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 8),
+            padding: const EdgeInsets.only(bottom: 24),
             child: ShutterButton(
               key: const Key('photoboothPreview_photo_shutterButton'),
               onCountdownComplete: onSnapPressed,
