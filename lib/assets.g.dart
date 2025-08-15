@@ -24,6 +24,145 @@ class Assets {
     path: 'assets/images/sparky.png',
     size: Size(730, 588),
   );
+
+  // [DORCO-2025-002] Sticker Props
+  static const dorcoProps = {
+    Asset(
+      name: '01_dorco_v1',
+      path: 'assets/props/dorco/01_dorco_v1.png',
+      size: Size(154, 146),
+    ),
+    Asset(
+      name: '02_dorco_v1',
+      path: 'assets/props/dorco/02_dorco_v1.png',
+      size: Size(172, 160),
+    ),
+    Asset(
+      name: '03_dorco_v1',
+      path: 'assets/props/dorco/03_dorco_v1.png',
+      size: Size(195, 141),
+    ),
+    Asset(
+      name: '04_dorco_v1',
+      path: 'assets/props/dorco/04_dorco_v1.png',
+      size: Size(169, 143),
+    ),
+    Asset(
+      name: '05_dorco_v1',
+      path: 'assets/props/dorco/05_dorco_v1.png',
+      size: Size(180, 95),
+    ),
+    Asset(
+      name: '06_dorco_v1',
+      path: 'assets/props/dorco/06_dorco_v1.png',
+      size: Size(165, 156),
+    ),
+    Asset(
+      name: '07_dorco_v1',
+      path: 'assets/props/dorco/07_dorco_v1.png',
+      size: Size(174, 164),
+    ),
+    Asset(
+      name: '08_dorco_v1',
+      path: 'assets/props/dorco/08_dorco_v1.png',
+      size: Size(140, 100),
+    ),
+    Asset(
+      name: '09_dorco_v1',
+      path: 'assets/props/dorco/09_dorco_v1.png',
+      size: Size(178, 75),
+    ),
+    Asset(
+      name: '10_dorco_v1',
+      path: 'assets/props/dorco/10_dorco_v1.png',
+      size: Size(202, 59),
+    ),
+    Asset(
+      name: '11_dorco_v1',
+      path: 'assets/props/dorco/11_dorco_v1.png',
+      size: Size(91, 213),
+    ),
+    Asset(
+      name: '12_dorco_v1',
+      path: 'assets/props/dorco/12_dorco_v1.png',
+      size: Size(181, 60),
+    ),
+    Asset(
+      name: '13_dorco_v1',
+      path: 'assets/props/dorco/13_dorco_v1.png',
+      size: Size(219, 151),
+    ),
+    Asset(
+      name: '14_dorco_v1',
+      path: 'assets/props/dorco/14_dorco_v1.png',
+      size: Size(237, 249),
+    ),
+    Asset(
+      name: '15_dorco_v1',
+      path: 'assets/props/dorco/15_dorco_v1.png',
+      size: Size(168, 133),
+    ),
+    Asset(
+      name: '16_dorco_v1',
+      path: 'assets/props/dorco/16_dorco_v1.png',
+      size: Size(242, 103),
+    ),
+    Asset(
+      name: '17_dorco_v1',
+      path: 'assets/props/dorco/17_dorco_v1.png',
+      size: Size(165, 110),
+    ),
+    Asset(
+      name: '18_dorco_v1',
+      path: 'assets/props/dorco/18_dorco_v1.png',
+      size: Size(154, 135),
+    ),
+    Asset(
+      name: '19_dorco_v1',
+      path: 'assets/props/dorco/19_dorco_v1.png',
+      size: Size(136, 145),
+    ),
+    Asset(
+      name: '20_dorco_v1',
+      path: 'assets/props/dorco/20_dorco_v1.png',
+      size: Size(90, 88),
+    ),
+    Asset(
+      name: '21_dorco_v1',
+      path: 'assets/props/dorco/21_dorco_v1.png',
+      size: Size(122, 119),
+    ),
+    Asset(
+      name: '22_dorco_v1',
+      path: 'assets/props/dorco/22_dorco_v1.png',
+      size: Size(166, 57),
+    ),
+    Asset(
+      name: '23_dorco_v1',
+      path: 'assets/props/dorco/23_dorco_v1.png',
+      size: Size(205, 70),
+    ),Asset(
+      name: '24_dorco_v1',
+      path: 'assets/props/dorco/24_dorco_v1.png',
+      size: Size(260, 71),
+    ),Asset(
+      name: '25_dorco_v1',
+      path: 'assets/props/dorco/25_dorco_v1.png',
+      size: Size(214, 48),
+    ),Asset(
+      name: '26_dorco_v1',
+      path: 'assets/props/dorco/26_dorco_v1.png',
+      size: Size(143, 137),
+    ),Asset(
+      name: '27_dorco_v1',
+      path: 'assets/props/dorco/27_dorco_v1.png',
+      size: Size(152, 158),
+    ),Asset(
+      name: '28_dorco_v1',
+      path: 'assets/props/dorco/28_dorco_v1.png',
+      size: Size(181, 152),
+    ),
+  };
   static const googleProps = {
     Asset(
       name: '01_google_v1',
@@ -674,11 +813,12 @@ class Assets {
       size: Size(363, 821),
     ),
   };
-  static const props = {
+
+  static const Set<Asset> props = {
     ...googleProps,
     ...eyewearProps,
     ...hatProps,
     ...foodProps,
-    ...shapeProps
+    ...shapeProps,
   };
 }

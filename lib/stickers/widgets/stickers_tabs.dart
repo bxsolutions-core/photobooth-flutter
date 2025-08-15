@@ -53,24 +53,8 @@ class _StickersTabsState extends State<StickersTabs>
           controller: _tabController,
           tabs: const [
             StickersTab(
-              key: Key('stickersTabs_googleTab'),
-              assetPath: 'assets/icons/google_icon.png',
-            ),
-            StickersTab(
-              key: Key('stickersTabs_hatsTab'),
-              assetPath: 'assets/icons/hats_icon.png',
-            ),
-            StickersTab(
-              key: Key('stickersTabs_eyewearTab'),
-              assetPath: 'assets/icons/eyewear_icon.png',
-            ),
-            StickersTab(
-              key: Key('stickersTabs_foodTab'),
-              assetPath: 'assets/icons/food_icon.png',
-            ),
-            StickersTab(
-              key: Key('stickersTabs_shapesTab'),
-              assetPath: 'assets/icons/shapes_icon.png',
+              key: Key('stickersTabs_dorcoTab'),
+              assetPath: 'assets/icons/stickers_button_icon.png',
             ),
           ],
         ),
@@ -80,28 +64,8 @@ class _StickersTabsState extends State<StickersTabs>
             controller: _tabController,
             children: [
               StickersTabBarView(
-                key: const Key('stickersTabs_googleTabBarView'),
-                stickers: Assets.googleProps,
-                onStickerSelected: widget.onStickerSelected,
-              ),
-              StickersTabBarView(
-                key: const Key('stickersTabs_hatsTabBarView'),
-                stickers: Assets.hatProps,
-                onStickerSelected: widget.onStickerSelected,
-              ),
-              StickersTabBarView(
-                key: const Key('stickersTabs_eyewearTabBarView'),
-                stickers: Assets.eyewearProps,
-                onStickerSelected: widget.onStickerSelected,
-              ),
-              StickersTabBarView(
-                key: const Key('stickersTabs_foodTabBarView'),
-                stickers: Assets.foodProps,
-                onStickerSelected: widget.onStickerSelected,
-              ),
-              StickersTabBarView(
-                key: const Key('stickersTabs_shapesTabBarView'),
-                stickers: Assets.shapeProps,
+                key: const Key('stickersTabs_dorcoTabBarView'),
+                stickers: Assets.dorcoProps,
                 onStickerSelected: widget.onStickerSelected,
               ),
             ],

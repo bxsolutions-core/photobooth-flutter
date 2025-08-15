@@ -93,8 +93,8 @@ class _ShareRetakeButton extends StatelessWidget {
           message: l10n.retakeButtonTooltip,
           child: Image.asset(
             'assets/icons/retake_button_icon.png',
-            height: 64,
-            width: 64,
+            height: 44,
+            width: 44,
           ),
         ),
       ),

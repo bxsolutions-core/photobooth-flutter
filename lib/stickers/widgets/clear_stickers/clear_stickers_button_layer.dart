@@ -49,7 +49,11 @@ class ClearStickersButton extends StatelessWidget {
         onPressed: onPressed,
         message: l10n.clearStickersButtonTooltip,
         verticalOffset: 50,
-        child: Image.asset('assets/icons/delete_icon.png', height: 100),
+        child: Image.asset(
+          'assets/icons/delete_icon.png',
+          height: 64,
+          width: 64,
+        ),
       ),
     );
   }

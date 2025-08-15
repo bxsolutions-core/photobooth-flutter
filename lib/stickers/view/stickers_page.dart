@@ -43,59 +43,79 @@ class StickersView extends StatelessWidget {
         children: [
           const PhotoboothBackground(),
           Center(
-            child: AspectRatio(
-              aspectRatio: state.aspectRatio,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  const Positioned.fill(
-                    child: ColoredBox(color: PhotoboothColors.black),
-                  ),
-                  if (image != null) PreviewImage(data: image.data),
-                  // const Align(
-                  //   alignment: Alignment.bottomLeft,
-                  //   child: Padding(
-                  //     padding: EdgeInsets.only(left: 16, bottom: 24),
-                  //     child: MadeWithIconLinks(),
-                  //   ),
-                  // ),
-                  const CharactersLayer(),
-                  const _DraggableStickers(),
-                  const Positioned(
-                    left: 15,
-                    top: 15,
-                    child: Row(
-                      children: [
-                        _RetakeButton(),
-                        ClearStickersButtonLayer(),
-                      ],
+            child: Padding(
+              padding: const EdgeInsetsGeometry.fromLTRB(20, 0, 20, 0),
+              child: AspectRatio(
+                aspectRatio: state.aspectRatio,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    const Positioned.fill(
+                      child: ColoredBox(color: PhotoboothColors.peridotGreen),
                     ),
-                  ),
-                  Positioned(
-                    right: 15,
-                    top: 15,
-                    child: OpenStickersButton(
-                      onPressed: () {
-                        context
-                            .read<StickersBloc>()
-                            .add(const StickersDrawerToggled());
-                      },
-                    ),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 30),
-                      child: _NextButton(),
-                    ),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: _StickerReminderText(),
-                  )
-                ],
+
+                    // if (image != null) PreviewImage(data: image.data),
+                    if (image != null)
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: PhotoboothColors.peridotGreen,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: PreviewImage(data: image.data),
+                        ),
+                      ),
+
+                    const _DraggableStickers(),
+                  ],
+                ),
               ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _RetakeButton(),
+                      ClearStickersButtonLayer(),
+                    ],
+                  ),
+                ),
+              ),
+
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: OpenStickersButton(
+                    onPressed: () {
+                      context.read<StickersBloc>().add(
+                        const StickersDrawerToggled(),
+                      );
+                    },
+                  ),
+                ),
+              ),
+
+              const Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 30),
+                  child: _NextButton(),
+                ),
+              ),
+            ],
+          ),
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: _StickerReminderText(),
           ),
           const StickersDrawerLayer(),
         ],
@@ -106,6 +126,7 @@ class StickersView extends StatelessWidget {
 
 class _StickerReminderText extends StatelessWidget {
   const _StickerReminderText();
+
   @override
   Widget build(BuildContext context) {
     final shouldDisplayPropsReminder = context.select(
@@ -147,12 +168,12 @@ class _DraggableStickers extends StatelessWidget {
           DraggableResizable(
             key: Key('stickerPage_${sticker.id}_draggableResizable_asset'),
             canTransform: sticker.id == state.selectedAssetId,
-            onUpdate: (update) => context
-                .read<PhotoboothBloc>()
-                .add(PhotoStickerDragged(sticker: sticker, update: update)),
-            onDelete: () => context
-                .read<PhotoboothBloc>()
-                .add(const PhotoDeleteSelectedStickerTapped()),
+            onUpdate: (update) => context.read<PhotoboothBloc>().add(
+              PhotoStickerDragged(sticker: sticker, update: update),
+            ),
+            onDelete: () => context.read<PhotoboothBloc>().add(
+              const PhotoDeleteSelectedStickerTapped(),
+            ),
             size: sticker.asset.size * _initialStickerScale,
             constraints: sticker.getImageConstraints(),
             child: SizedBox.expand(
@@ -197,7 +218,11 @@ class _RetakeButton extends StatelessWidget {
         },
         verticalOffset: 50,
         message: l10n.retakeButtonTooltip,
-        child: Image.asset('assets/icons/retake_button_icon.png', height: 64, width: 64),
+        child: Image.asset(
+          'assets/icons/retake_button_icon.png',
+          height: 64,
+          width: 64,
+        ),
       ),
     );
   }
@@ -289,8 +314,11 @@ class _RetakeConfirmationDialogContent extends StatelessWidget {
                     onPressed: () => Navigator.of(context).pop(true),
                     child: Text(
                       l10n.stickersRetakeConfirmationConfirmButtonText,
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        color: PhotoboothColors.white,
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ],
@@ -378,7 +406,7 @@ class _NextConfirmationDialogContent extends StatelessWidget {
                     child: Text(
                       l10n.stickersNextConfirmationConfirmButtonText,
                     ),
-                  )
+                  ),
                 ],
               ),
             ],
