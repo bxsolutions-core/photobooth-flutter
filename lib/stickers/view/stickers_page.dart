@@ -405,6 +405,9 @@ class _NextConfirmationDialogContent extends StatelessWidget {
                     onPressed: () => Navigator.of(context).pop(true),
                     child: Text(
                       l10n.stickersNextConfirmationConfirmButtonText,
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        color: PhotoboothColors.white,
+                      ),
                     ),
                   ),
                 ],

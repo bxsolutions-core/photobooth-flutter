@@ -52,7 +52,10 @@ class ShareButton extends StatelessWidget {
           ),
         );
       },
-      child: Text(l10n.sharePageShareButtonText),
+      child: Text(
+        l10n.sharePageShareButtonText,
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 }

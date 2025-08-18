@@ -41,6 +41,8 @@ class _OffscreenCompositor {
 
   /// Left, Top, Right border size.
   static const _frameBorderSize = 15;
+  static const _frameBorderSizeLR = 63;
+  static const _frameBorderSizeT = 175;
 
   Future<List<int>> composite() async {
     final layers =
@@ -90,10 +92,10 @@ class _OffscreenCompositor {
       imageCropOffsetY = (croppedHeight - height) ~/ 2;
     }
 
-    const insideFrameX = _frameBorderSize;
-    const insideFrameY = _frameBorderSize;
-    final insideFrameWidth = frameImage.width - (2 * _frameBorderSize);
-    final insideFrameHeight = insideFrameWidth ~/ targetAspectRatio;
+    const insideFrameX = _frameBorderSizeLR;
+    const insideFrameY = _frameBorderSizeT;
+    final insideFrameWidth = frameImage.width - (2 * _frameBorderSizeLR);
+    final insideFrameHeight = frameImage.height - (2 * _frameBorderSizeT);//insideFrameWidth ~/ targetAspectRatio;
 
     /// Render images to offscreen canvas.
     final canvas = OffScreenCanvas(targetWidth, targetHeight)

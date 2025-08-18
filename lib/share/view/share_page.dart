@@ -46,7 +46,7 @@ class ShareView extends StatelessWidget {
         child: const AppPageView(
           background: ShareBackground(),
           body: ShareBody(),
-          footer: WhiteFooter(),
+          footer: SizedBox(height: 20),//WhiteFooter(),
           overlays: [
             _ShareRetakeButton(),
             ShareProgressOverlay(),

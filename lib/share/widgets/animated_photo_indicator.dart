@@ -9,8 +9,8 @@ class AnimatedPhotoIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayoutBuilder(
-      small: (_, __) => const _AnimatedPhotoIndicator(scale: 0.6),
-      medium: (_, __) => const _AnimatedPhotoIndicator(scale: 0.7),
+      small: (_, __) => const _AnimatedPhotoIndicator(scale: 0.33),
+      medium: (_, __) => const _AnimatedPhotoIndicator(scale: 0.5),
       large: (_, __) => const _AnimatedPhotoIndicator(),
     );
   }

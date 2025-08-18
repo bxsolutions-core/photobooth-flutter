@@ -37,31 +37,25 @@ class ShareBody extends StatelessWidget {
         children: [
           const AnimatedPhotoIndicator(),
           AnimatedPhotoboothPhoto(image: image),
+
+          //TODO insert [PrintStation_QRCode] here
+
           if (compositeStatus.isSuccess)
             AnimatedFadeIn(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 20),
-                  if (isUploadSuccess)
-                    const ShareSuccessHeading()
-                  else
-                    const ShareHeading(),
-                  const SizedBox(height: 20),
-                  if (isUploadSuccess)
-                    const ShareSuccessSubheading()
-                  else
-                    const ShareSubheading(),
                   const SizedBox(height: 30),
-                  if (isUploadSuccess)
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 30,
-                        right: 30,
-                        bottom: 30,
-                      ),
-                      child: ShareCopyableLink(link: shareUrl),
-                    ),
+                  // if (isUploadSuccess)
+                  //   Padding(
+                  //     padding: const EdgeInsets.only(
+                  //       left: 30,
+                  //       right: 30,
+                  //       bottom: 30,
+                  //     ),
+                  //     child: ShareCopyableLink(link: shareUrl),
+                  //   ),
+
                   if (compositedImage != null && file != null)
                     ResponsiveLayoutBuilder(
                       small: (_, __) => MobileButtonsLayout(
@@ -73,12 +67,13 @@ class ShareBody extends StatelessWidget {
                         file: file,
                       ),
                     ),
-                  const SizedBox(height: 28),
-                  if (isUploadSuccess)
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 1000),
-                      child: const ShareSuccessCaption(),
-                    ),
+
+                  // const SizedBox(height: 28),
+                  // if (isUploadSuccess)
+                  //   ConstrainedBox(
+                  //     constraints: const BoxConstraints(maxWidth: 1000),
+                  //     child: const ShareSuccessCaption(),
+                  //   ),
                 ],
               ),
             ),
@@ -120,8 +115,8 @@ class DesktopButtonsLayout extends StatelessWidget {
         Flexible(child: DownloadButton(file: file)),
         const SizedBox(width: 36),
         Flexible(child: ShareButton(image: image)),
-        const SizedBox(width: 36),
-        const GoToGoogleIOButton(),
+        // const SizedBox(width: 36),
+        // const GoToGoogleIOButton(),
       ],
     );
   }
@@ -146,8 +141,8 @@ class MobileButtonsLayout extends StatelessWidget {
         DownloadButton(file: file),
         const SizedBox(height: 20),
         ShareButton(image: image),
-        const SizedBox(height: 20),
-        const GoToGoogleIOButton(),
+        // const SizedBox(height: 20),
+        // const GoToGoogleIOButton(),
       ],
     );
   }
