@@ -1,9 +1,5 @@
-import 'package:analytics/analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:io_photobooth/assets.g.dart';
-import 'package:io_photobooth/footer/footer.dart';
-import 'package:io_photobooth/l10n/l10n.dart';
 import 'package:io_photobooth/photobooth/photobooth.dart';
 import 'package:photobooth_ui/photobooth_ui.dart';
 
@@ -30,18 +26,17 @@ class PhotoboothPreview extends StatelessWidget {
         Center(
           child: Padding(
             padding: const EdgeInsetsGeometry.fromLTRB(20, 0, 20, 0),
-            child: AspectRatio(
-              aspectRatio: aspectRatio,
-              child: ColoredBox(
-                color: PhotoboothColors.peridotGreen,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: PhotoboothColors.peridotGreen,
-                      borderRadius: BorderRadius.circular(12), // same radius
-                      // If you set only borderRadius here, it's fine if Container has a color
-                    ),
+            child: ColoredBox(
+              color: PhotoboothColors.peridotGreen,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: PhotoboothColors.peridotGreen,
+                    borderRadius: BorderRadius.circular(12), // same radius
+                  ),
+                  child: AspectRatio(
+                    aspectRatio: aspectRatio,
                     child: preview,
                   ),
                 ),

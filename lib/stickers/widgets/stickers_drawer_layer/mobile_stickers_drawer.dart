@@ -29,7 +29,7 @@ class MobileStickersDrawer extends StatelessWidget {
             ? screenHeight
             : screenHeight * 0.75,
         decoration: const BoxDecoration(
-          color: PhotoboothColors.white,
+          color: PhotoboothColors.black54,
           borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
         ),
         child: Stack(
@@ -46,7 +46,7 @@ class MobileStickersDrawer extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .displaySmall
-                          ?.copyWith(fontSize: 24),
+                          ?.copyWith(fontSize: 16, color: PhotoboothColors.white),
                     ),
                   ),
                 ),

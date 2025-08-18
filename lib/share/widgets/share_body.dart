@@ -36,9 +36,10 @@ class ShareBody extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const AnimatedPhotoIndicator(),
-          AnimatedPhotoboothPhoto(image: image),
+          // AnimatedPhotoboothPhoto(image: image),
 
           //TODO insert [PrintStation_QRCode] here
+          SharePreviewPhoto(image: compositedImage!),
 
           if (compositeStatus.isSuccess)
             AnimatedFadeIn(
@@ -139,8 +140,8 @@ class MobileButtonsLayout extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         DownloadButton(file: file),
-        const SizedBox(height: 20),
-        ShareButton(image: image),
+        // const SizedBox(height: 20),
+        // ShareButton(image: image),
         // const SizedBox(height: 20),
         // const GoToGoogleIOButton(),
       ],

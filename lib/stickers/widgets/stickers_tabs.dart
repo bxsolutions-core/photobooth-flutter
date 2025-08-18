@@ -54,11 +54,7 @@ class _StickersTabsState extends State<StickersTabs>
           tabs: const [
             StickersTab(
               key: Key('stickersTabs_dorcoTab'),
-              assetPath: 'assets/icons/stickers_button_icon.png',
-            ),
-            StickersTab(
-              key: Key('stickersTabs_eyewearTab'),
-              assetPath: 'assets/icons/eyewear_icon.png',
+              assetPath: 'assets/icons/sticker_icon.png',
             ),
           ],
         ),
@@ -70,11 +66,6 @@ class _StickersTabsState extends State<StickersTabs>
               StickersTabBarView(
                 key: const Key('stickersTabs_dorcoTabBarView'),
                 stickers: Assets.dorcoProps,
-                onStickerSelected: widget.onStickerSelected,
-              ),
-              StickersTabBarView(
-                key: const Key('stickersTabs_eyewearTabBarView'),
-                stickers: Assets.eyewearProps,
                 onStickerSelected: widget.onStickerSelected,
               ),
             ],
@@ -178,26 +169,27 @@ class StickerChoice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       asset.path,
-      frameBuilder: (
-        BuildContext context,
-        Widget child,
-        int? frame,
-        bool wasSynchronouslyLoaded,
-      ) {
-        return AppAnimatedCrossFade(
-          firstChild: SizedBox.fromSize(
-            size: const Size(20, 20),
-            child: const AppCircularProgressIndicator(strokeWidth: 2),
-          ),
-          secondChild: InkWell(
-            onTap: onPressed,
-            child: child,
-          ),
-          crossFadeState: frame == null
-              ? CrossFadeState.showFirst
-              : CrossFadeState.showSecond,
-        );
-      },
+      frameBuilder:
+          (
+            BuildContext context,
+            Widget child,
+            int? frame,
+            bool wasSynchronouslyLoaded,
+          ) {
+            return AppAnimatedCrossFade(
+              firstChild: SizedBox.fromSize(
+                size: const Size(20, 20),
+                child: const AppCircularProgressIndicator(strokeWidth: 2),
+              ),
+              secondChild: InkWell(
+                onTap: onPressed,
+                child: child,
+              ),
+              crossFadeState: frame == null
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
+            );
+          },
     );
   }
 }

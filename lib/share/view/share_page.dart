@@ -46,7 +46,7 @@ class ShareView extends StatelessWidget {
         child: const AppPageView(
           background: ShareBackground(),
           body: ShareBody(),
-          footer: SizedBox(height: 20),//WhiteFooter(),
+          footer: SizedBox(height: 20), //WhiteFooter(),
           overlays: [
             _ShareRetakeButton(),
             ShareProgressOverlay(),
@@ -150,8 +150,13 @@ class _ConfirmationDialogContent extends StatelessWidget {
                   ElevatedButton(
                     key: const Key('sharePage_retakeConfirm_elevatedButton'),
                     onPressed: () => Navigator.of(context).pop(true),
-                    child: Text(l10n.shareRetakeConfirmationConfirmButtonText),
-                  )
+                    child: Text(
+                      l10n.shareRetakeConfirmationConfirmButtonText,
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        color: PhotoboothColors.black,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],

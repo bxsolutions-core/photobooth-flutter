@@ -12,8 +12,8 @@ const _videoConstraints = VideoConstraints(
     type: CameraType.user,
     constrain: Constrain.ideal,
   ),
-  width: VideoSize(ideal: 1200, maximum: 1200),
-  height: VideoSize(ideal: 1800, maximum: 1800),
+  width: VideoSize(ideal: 720, maximum: 1080),
+  height: VideoSize(ideal: 1280, maximum: 1920),
 );
 
 class PhotoboothPage extends StatelessWidget {
@@ -98,7 +98,7 @@ class _PhotoboothViewState extends State<PhotoboothView> {
         ? PhotoboothAspectRatio.portrait
         : PhotoboothAspectRatio.landscape;
 
-    debugPrint('here:$orientation');
+    debugPrint('here: $orientation, $aspectRatio');
     return Scaffold(
       extendBody: true,
       body: _PhotoboothBackground(

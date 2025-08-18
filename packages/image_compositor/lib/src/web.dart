@@ -41,8 +41,8 @@ class _OffscreenCompositor {
 
   /// Left, Top, Right border size.
   static const _frameBorderSize = 15;
-  static const _frameBorderSizeLR = 63;
-  static const _frameBorderSizeT = 175;
+  static const _frameBorderSizeLR = 64;
+  static const _frameBorderSizeT = 128;
 
   Future<List<int>> composite() async {
     final layers =
