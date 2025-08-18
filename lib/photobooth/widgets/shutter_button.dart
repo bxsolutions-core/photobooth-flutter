@@ -39,11 +39,12 @@ class _ShutterButtonState extends State<ShutterButton>
   void initState() {
     super.initState();
     audioPlayer = widget._audioPlayer()..setAsset('assets/audio/camera.mp3');
+
     controller = AnimationController(
       vsync: this,
       duration: _shutterCountdownDuration,
     )..addStatusListener(_onAnimationStatusChanged);
-    unawaited(audioPlayer.play());
+    //unawaited(audioPlayer.play());
     audioPlayer.playerStateStream.listen((event) {
       if (event.processingState == ProcessingState.ready) {
         audioPlayer.pause();
@@ -90,9 +91,9 @@ class CountdownTimer extends StatelessWidget {
         (_shutterCountdownDuration.inSeconds * controller.value).ceil();
     final theme = Theme.of(context);
     return Container(
-      height: 70,
-      width: 70,
-      margin: const EdgeInsets.only(bottom: 15),
+      height: 64,
+      width: 64,
+      // margin: const EdgeInsets.only(bottom: 15),
       child: Stack(
         children: [
           Align(

@@ -37,6 +37,11 @@ class StickersView extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = context.watch<PhotoboothBloc>().state;
     final image = state.image;
+
+    final isHidden = context.select(
+      (PhotoboothBloc bloc) => bloc.state.stickers.isEmpty,
+    );
+
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -80,15 +85,18 @@ class StickersView extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _RetakeButton(),
-                      ClearStickersButtonLayer(),
-                    ],
-                  ),
+                  child: _RetakeButton(),
                 ),
               ),
+
+              if (!isHidden)
+                const Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 30),
+                    child: ClearStickersButtonLayer(),
+                  ),
+                ),
 
               Align(
                 alignment: Alignment.bottomCenter,

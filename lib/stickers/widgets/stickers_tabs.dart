@@ -56,6 +56,10 @@ class _StickersTabsState extends State<StickersTabs>
               key: Key('stickersTabs_dorcoTab'),
               assetPath: 'assets/icons/stickers_button_icon.png',
             ),
+            StickersTab(
+              key: Key('stickersTabs_eyewearTab'),
+              assetPath: 'assets/icons/eyewear_icon.png',
+            ),
           ],
         ),
         const Divider(),
@@ -66,6 +70,11 @@ class _StickersTabsState extends State<StickersTabs>
               StickersTabBarView(
                 key: const Key('stickersTabs_dorcoTabBarView'),
                 stickers: Assets.dorcoProps,
+                onStickerSelected: widget.onStickerSelected,
+              ),
+              StickersTabBarView(
+                key: const Key('stickersTabs_eyewearTabBarView'),
+                stickers: Assets.eyewearProps,
                 onStickerSelected: widget.onStickerSelected,
               ),
             ],
