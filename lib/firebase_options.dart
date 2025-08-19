@@ -53,12 +53,11 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAwrGoDm6syeESeWV1HApzDKZEomMEtR4U',
-    appId: '1:931695903758:web:33a07d199e97fa53f4a85f',
-    messagingSenderId: '931695903758',
-    projectId: 'io-photobooth-dev',
-    authDomain: 'io-photobooth-dev.firebaseapp.com',
-    storageBucket: 'io-photobooth-dev.appspot.com',
-    measurementId: 'G-F7PXP7CEE4',
+    projectId: 'dorco-retail-event',
+    appId: '1:305924165949:web:d88b298b8aaf7bfc96b554',
+    apiKey: 'AIzaSyAERZxMnQYNnmwjVI1Nujfn9vlwpfZzI3s',
+    storageBucket: 'dorco-retail-event.firebasestorage.app',
+    authDomain: 'dorco-retail-event.firebaseapp.com',
+    messagingSenderId: '305924165949',
   );
 }

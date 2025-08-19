@@ -221,7 +221,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clearStickersDialogConfirmButtonText => 'Yes, clear all props';
 
   @override
-  String get propsReminderText => 'Add some props';
+  String get propsReminderText => 'Add some stickers';
 
   @override
   String get stickersNextConfirmationHeading => 'Ready to see the final photo?';

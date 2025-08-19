@@ -492,10 +492,10 @@ abstract class AppLocalizations {
   /// **'Yes, clear all props'**
   String get clearStickersDialogConfirmButtonText;
 
-  /// Helper text to add props
+  /// Helper text to add stickers
   ///
   /// In en, this message translates to:
-  /// **'Add some props'**
+  /// **'Add some stickers'**
   String get propsReminderText;
 
   /// Heading shown in the confirmation when user taps the next button

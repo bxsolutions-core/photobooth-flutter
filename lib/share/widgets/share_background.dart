@@ -13,6 +13,7 @@ class ShareBackground extends StatelessWidget {
             'assets/backgrounds/photobooth_background.jpg',
             repeat: ImageRepeat.repeat,
             filterQuality: FilterQuality.high,
+            color: PhotoboothColors.black,
           ),
         ),
         Container(

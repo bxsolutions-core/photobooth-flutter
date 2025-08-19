@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:analytics/analytics.dart';
@@ -9,9 +10,11 @@ import 'package:io_photobooth/l10n/l10n.dart';
 import 'package:io_photobooth/photobooth/photobooth.dart';
 import 'package:io_photobooth/share/share.dart';
 import 'package:photobooth_ui/photobooth_ui.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 class ShareBody extends StatelessWidget {
   const ShareBody({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +33,13 @@ class ShareBody extends StatelessWidget {
       (ShareBloc bloc) => bloc.state.explicitShareUrl,
     );
 
+    debugPrint('SharePage.Body() ::-> ${file?.name}');
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           const AnimatedPhotoIndicator(),
-          // AnimatedPhotoboothPhoto(image: image),
-
-          //TODO insert [PrintStation_QRCode] here
-          SharePreviewPhoto(image: compositedImage!),
 
           if (compositeStatus.isSuccess)
             AnimatedFadeIn(
@@ -47,37 +47,55 @@ class ShareBody extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 30),
-                  // if (isUploadSuccess)
-                  //   Padding(
-                  //     padding: const EdgeInsets.only(
-                  //       left: 30,
-                  //       right: 30,
-                  //       bottom: 30,
-                  //     ),
-                  //     child: ShareCopyableLink(link: shareUrl),
-                  //   ),
 
-                  if (compositedImage != null && file != null)
-                    ResponsiveLayoutBuilder(
-                      small: (_, __) => MobileButtonsLayout(
-                        image: compositedImage,
-                        file: file,
+                  if (isUploadSuccess)
+                    Container(
+                      alignment: Alignment.center,
+                      constraints: const BoxConstraints(
+                        maxWidth: 200,
+                        maxHeight: 200,
                       ),
-                      large: (_, __) => DesktopButtonsLayout(
-                        image: compositedImage,
-                        file: file,
+                      child: PrettyQrView.data(
+                        data: 'dorcoprint://${file?.name}',
+                        decoration: const PrettyQrDecoration(
+                          background: Colors.white,
+                          image: PrettyQrDecorationImage(
+                            image: AssetImage('assets/icons/dorco_icon.png'),
+                          ),
+                          quietZone: PrettyQrQuietZone.pixels(8),
+                        ),
                       ),
                     ),
 
-                  // const SizedBox(height: 28),
-                  // if (isUploadSuccess)
-                  //   ConstrainedBox(
-                  //     constraints: const BoxConstraints(maxWidth: 1000),
-                  //     child: const ShareSuccessCaption(),
-                  //   ),
+                  if (compositedImage != null && file != null)
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const SizedBox(height: 64),
+                        Container(
+                          alignment: Alignment.center,
+                          constraints: const BoxConstraints(
+                            maxHeight: 200,
+                          ),
+                          child: SharePreviewPhoto(image: compositedImage),
+                        ),
+                        const SizedBox(height: 30),
+                        ResponsiveLayoutBuilder(
+                          small: (_, __) => MobileButtonsLayout(
+                            image: compositedImage,
+                            file: file,
+                          ),
+                          large: (_, __) => DesktopButtonsLayout(
+                            image: compositedImage,
+                            file: file,
+                          ),
+                        ),
+                      ],
+                    ),
                 ],
               ),
             ),
+
           if (compositeStatus.isFailure)
             const AnimatedFadeIn(
               child: Column(
@@ -90,7 +108,7 @@ class ShareBody extends StatelessWidget {
                   SizedBox(height: 30),
                 ],
               ),
-            )
+            ),
         ],
       ),
     );

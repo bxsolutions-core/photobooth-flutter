@@ -23,7 +23,10 @@ class TwitterButton extends StatelessWidget {
 
         Navigator.of(context).pop();
       },
-      child: Text(l10n.shareDialogTwitterButtonText),
+      child: Text(
+        l10n.shareDialogTwitterButtonText,
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 }

@@ -252,9 +252,9 @@
     "@clearStickersDialogConfirmButtonText": {
         "description": "Confirm button text displayed on the clear stickers dialog"
     },
-    "propsReminderText": "Add some props",
+    "propsReminderText": "Add some stickers",
     "@propsReminderText": {
-        "description": "Helper text to add props"
+        "description": "Helper text to add stickers"
     },
     "stickersNextConfirmationHeading": "Ready to see the final photo?",
     "@stickersNextConfirmationHeading": {

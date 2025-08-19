@@ -38,6 +38,7 @@ dependencies:
 
   intl: ^0.20.2
   just_audio: ^0.9.31
+  pretty_qr_code: ^3.5.0
 
   photobooth_ui:
     path: packages/photobooth_ui

@@ -18,8 +18,7 @@ import 'package:io_photobooth/landing/loading_indicator_io.dart'
 import 'package:photobooth_ui/photobooth_ui.dart';
 import 'package:photos_repository/photos_repository.dart';
 
-void main() async {
-
+Future<void> main() async {
   // debugPaintSizeEnabled = false;
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +27,7 @@ void main() async {
     print(details.exceptionAsString());
     print(details.stack);
   };
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -55,17 +55,24 @@ void main() async {
     ]),
   );
 
-  runZonedGuarded(
-    () => runApp(
-      App(
-        authenticationRepository: authenticationRepository,
-        photosRepository: photosRepository,
-      ),
+  // runZonedGuarded(
+  //   () => runApp(
+  //     App(
+  //       authenticationRepository: authenticationRepository,
+  //       photosRepository: photosRepository,
+  //     ),
+  //   ),
+  //   (error, stackTrace) {
+  //     print(error);
+  //     print(stackTrace);
+  //   },
+  // );
+
+  runApp(
+    App(
+      authenticationRepository: authenticationRepository,
+      photosRepository: photosRepository,
     ),
-    (error, stackTrace) {
-      print(error);
-      print(stackTrace);
-    },
   );
 
   SchedulerBinding.instance.addPostFrameCallback(

@@ -26,7 +26,7 @@ class _StickersTabsState extends State<StickersTabs>
   void initState() {
     super.initState();
     _tabController = TabController(
-      length: 5,
+      length: 1,
       vsync: this,
       initialIndex: widget.initialIndex,
     );

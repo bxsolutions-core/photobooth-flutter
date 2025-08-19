@@ -44,13 +44,13 @@ class ShareBottomSheet extends StatelessWidget {
                     style: theme.textTheme.displayLarge?.copyWith(fontSize: 32),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 24),
-                  SelectableText(
-                    l10n.shareDialogSubheading,
-                    key: const Key('shareBottomSheet_subheading'),
-                    style: theme.textTheme.displaySmall?.copyWith(fontSize: 18),
-                    textAlign: TextAlign.center,
-                  ),
+                  // const SizedBox(height: 24),
+                  // SelectableText(
+                  //   l10n.shareDialogSubheading,
+                  //   key: const Key('shareBottomSheet_subheading'),
+                  //   style: theme.textTheme.displaySmall?.copyWith(fontSize: 18),
+                  //   textAlign: TextAlign.center,
+                  // ),
                   const SizedBox(height: 42),
                   const Column(
                     children: [
@@ -59,8 +59,8 @@ class ShareBottomSheet extends StatelessWidget {
                       FacebookButton(),
                     ],
                   ),
-                  const SizedBox(height: 42),
-                  const SocialMediaShareClarificationNote(),
+                  // const SizedBox(height: 42),
+                  // const SocialMediaShareClarificationNote(),
                 ],
               ),
             ),

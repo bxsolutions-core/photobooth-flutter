@@ -15,6 +15,10 @@ abstract class ShareTapped extends ShareEvent {
   const ShareTapped();
 }
 
+class ShareOnAutomatic extends ShareTapped {
+  const ShareOnAutomatic();
+}
+
 class ShareOnTwitterTapped extends ShareTapped {
   const ShareOnTwitterTapped();
 }

@@ -22,7 +22,10 @@ class FacebookButton extends StatelessWidget {
 
         Navigator.of(context).pop();
       },
-      child: Text(l10n.shareDialogFacebookButtonText),
+      child: Text(
+        l10n.shareDialogFacebookButtonText,
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 }

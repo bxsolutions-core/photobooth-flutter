@@ -29,6 +29,7 @@ class SharePage extends StatelessWidget {
           assets: state.assets,
           aspectRatio: state.aspectRatio,
           shareText: l10n.socialMediaShareLinkText,
+          isSharingEnabled: true
         )..add(const ShareViewLoaded());
       },
       child: const ShareView(),
@@ -41,12 +42,15 @@ class ShareView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    context.read<ShareBloc>().add(const ShareOnAutomatic());
+
     return Scaffold(
       body: ShareStateListener(
         child: const AppPageView(
           background: ShareBackground(),
           body: ShareBody(),
-          footer: SizedBox(height: 20), //WhiteFooter(),
+          footer: SizedBox(height: 0), //WhiteFooter(),
           overlays: [
             _ShareRetakeButton(),
             ShareProgressOverlay(),
