@@ -131,6 +131,10 @@ class Camera {
     }
 
     videoElement = html.VideoElement()..applyDefaultStyles();
+    if (options.video.facingMode?.type == CameraType.rear) {
+      videoElement = html.VideoElement()..applyRearCameraStyles();
+    }
+
     divElement = html.DivElement()
       ..style.setProperty('object-fit', 'cover')
       ..append(videoElement);
@@ -143,6 +147,7 @@ class Camera {
     }
 
     final stream = await _getMediaStream();
+
     videoElement
       ..autoplay = false
       ..muted = !options.audio.enabled
@@ -233,5 +238,17 @@ extension on html.VideoElement {
       ..setProperty('object-fit', 'cover')
       ..setProperty('-webkit-transform', 'scaleX(-1)')
       ..setProperty('-moz-transform', 'scaleX(-1)');
+  }
+
+  void applyRearCameraStyles() {
+    style
+      ..removeProperty('transform-origin')
+      ..setProperty('pointer-events', 'none')
+      ..setProperty('width', '100%')
+      ..setProperty('height', '100%')
+      ..setProperty('transform', 'scaleX(1)')
+      ..setProperty('object-fit', 'cover')
+      ..setProperty('-webkit-transform', 'scaleX(1)')
+      ..setProperty('-moz-transform', 'scaleX(1)');
   }
 }

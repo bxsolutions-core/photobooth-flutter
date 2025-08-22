@@ -9,11 +9,11 @@ import 'package:photobooth_ui/photobooth_ui.dart';
 
 const _videoConstraints = VideoConstraints(
   facingMode: FacingMode(
-    type: CameraType.user,
+    type: CameraType.rear,
     constrain: Constrain.ideal,
   ),
-  width: VideoSize(ideal: 480, maximum: 1080),
-  height: VideoSize(ideal: 640, maximum: 1920),
+  width: VideoSize(ideal: 720, maximum: 1080),
+  height: VideoSize(ideal: 1280, maximum: 1920),
 );
 
 class PhotoboothPage extends StatelessWidget {
