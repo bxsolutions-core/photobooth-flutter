@@ -128,7 +128,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sharePageProgressOverlayHeading =>
-      'We\'re making your photo pixel perfect with Flutter! ';
+      'We\'re making your photo pixel perfect! ';
 
   @override
   String get sharePageProgressOverlaySubheading =>
