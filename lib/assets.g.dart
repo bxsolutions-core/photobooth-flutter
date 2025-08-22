@@ -144,7 +144,7 @@ class Assets {
     ),Asset(
       name: '24_dorco_v1',
       path: 'assets/props/dorco/24_dorco_v1.png',
-      size: Size(780, 213),
+      size: Size(624, 213),
     ),Asset(
       name: '25_dorco_v1',
       path: 'assets/props/dorco/25_dorco_v1.png',

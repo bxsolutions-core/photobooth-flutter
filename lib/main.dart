@@ -55,19 +55,6 @@ Future<void> main() async {
     ]),
   );
 
-  // runZonedGuarded(
-  //   () => runApp(
-  //     App(
-  //       authenticationRepository: authenticationRepository,
-  //       photosRepository: photosRepository,
-  //     ),
-  //   ),
-  //   (error, stackTrace) {
-  //     print(error);
-  //     print(stackTrace);
-  //   },
-  // );
-
   runApp(
     App(
       authenticationRepository: authenticationRepository,
