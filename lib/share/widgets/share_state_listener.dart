@@ -28,7 +28,8 @@ class ShareStateListener extends StatelessWidget {
     if (state.uploadStatus.isFailure) {
       _onShareError(context, state);
     } else if (state.uploadStatus.isSuccess) {
-      _onShareSuccess(context, state);
+      // DISABLE THIS - Not needed for this scope
+      //_onShareSuccess(context, state);
     }
   }
 
