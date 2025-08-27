@@ -131,9 +131,9 @@ class Camera {
     }
 
     videoElement = html.VideoElement()..applyDefaultStyles();
-    if (options.video.facingMode?.type == CameraType.rear) {
-      videoElement = html.VideoElement()..applyRearCameraStyles();
-    }
+    // if (options.video.facingMode?.type == CameraType.rear) {
+    //   videoElement = html.VideoElement()..applyRearCameraStyles();
+    // }
 
     divElement = html.DivElement()
       ..style.setProperty('object-fit', 'cover')

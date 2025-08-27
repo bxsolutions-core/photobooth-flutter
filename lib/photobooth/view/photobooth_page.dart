@@ -9,6 +9,15 @@ import 'package:photobooth_ui/photobooth_ui.dart';
 
 const _videoConstraints = VideoConstraints(
   facingMode: FacingMode(
+    type: CameraType.user,
+    constrain: Constrain.ideal,
+  ),
+  width: VideoSize(ideal: 720, maximum: 1080),
+  height: VideoSize(ideal: 1280, maximum: 1920),
+);
+
+const _videoConstraintsRear = VideoConstraints(
+  facingMode: FacingMode(
     type: CameraType.rear,
     constrain: Constrain.ideal,
   ),
@@ -28,9 +37,10 @@ class PhotoboothPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => PhotoboothBloc(),
       child: Navigator(
-        onGenerateRoute: (_) => AppPageRoute(
-          builder: (_) => const PhotoboothView(),
-        ),
+        onGenerateRoute: (_) =>
+            AppPageRoute(
+              builder: (_) => const PhotoboothView(),
+            ),
       ),
     );
   }
@@ -44,10 +54,13 @@ class PhotoboothView extends StatefulWidget {
 }
 
 class _PhotoboothViewState extends State<PhotoboothView> {
+  Key _childKey = UniqueKey();
+  void _resetChild() => setState(() => _childKey = UniqueKey());
+
   final _controller = CameraController(
     options: const CameraOptions(
-      audio: AudioConstraints(),
-      video: _videoConstraints,
+        audio: AudioConstraints(),
+        video: _videoConstraints,
     ),
   );
 
@@ -91,9 +104,19 @@ class _PhotoboothViewState extends State<PhotoboothView> {
     unawaited(navigator.pushReplacement(stickersPage));
   }
 
+  Future<void> _onToggleCameraType() async {
+    if (_controller.options.video.facingMode?.type == CameraType.rear) {
+
+    } else {
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final orientation = MediaQuery.of(context).orientation;
+    final orientation = MediaQuery
+        .of(context)
+        .orientation;
     final aspectRatio = orientation == Orientation.portrait
         ? PhotoboothAspectRatio.portrait
         : PhotoboothAspectRatio.landscape;
@@ -107,11 +130,13 @@ class _PhotoboothViewState extends State<PhotoboothView> {
         child: Camera(
           controller: _controller,
           placeholder: (_) => const SizedBox(),
-          preview: (context, preview) => PhotoboothPreview(
-            preview: preview,
-            onSnapPressed: () => _onSnapPressed(aspectRatio: aspectRatio),
-            aspectRatio: aspectRatio,
-          ),
+          preview: (context, preview) =>
+              PhotoboothPreview(
+                preview: preview,
+                onSnapPressed: () => _onSnapPressed(aspectRatio: aspectRatio),
+                onToggleCameraType: _onToggleCameraType,
+                aspectRatio: aspectRatio,
+              ),
           error: (context, error) => PhotoboothError(error: error),
         ),
       ),
@@ -137,18 +162,6 @@ class _PhotoboothBackground extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         const PhotoboothBackground(),
-        // Center(
-        //   child: Padding(
-        //     padding: const EdgeInsetsGeometry.fromLTRB(20, 0, 20, 0),
-        //     child: AspectRatio(
-        //       aspectRatio: aspectRatio,
-        //       child: ColoredBox(
-        //         color: PhotoboothColors.peridotGreen,
-        //         child: child,
-        //       ),
-        //     ),
-        //   ),
-        // ),
         child,
       ],
     );

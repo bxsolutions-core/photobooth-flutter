@@ -348,6 +348,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -368,6 +369,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -387,6 +389,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -411,6 +414,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -440,6 +444,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -473,6 +478,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -500,6 +506,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -535,6 +542,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -564,6 +572,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -594,6 +603,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -634,6 +644,7 @@ void main() {
             child: PhotoboothPreview(
               preview: preview,
               onSnapPressed: () {},
+              onToggleCameraType: () {},
               aspectRatio: PhotoboothAspectRatio.portrait,
             ),
           ),
@@ -659,6 +670,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -678,6 +690,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -697,6 +710,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -727,6 +741,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -757,6 +772,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -787,6 +803,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -814,6 +831,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),
@@ -841,6 +859,7 @@ void main() {
             child: PhotoboothPreview(
               preview: preview,
               onSnapPressed: () {},
+              onToggleCameraType: () {},
               aspectRatio: PhotoboothAspectRatio.portrait,
             ),
           ),
@@ -865,6 +884,7 @@ void main() {
           child: PhotoboothPreview(
             preview: preview,
             onSnapPressed: () {},
+            onToggleCameraType: () {},
             aspectRatio: PhotoboothAspectRatio.portrait,
           ),
         ),

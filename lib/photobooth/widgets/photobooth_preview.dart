@@ -10,12 +10,14 @@ class PhotoboothPreview extends StatelessWidget {
   const PhotoboothPreview({
     required this.preview,
     required this.onSnapPressed,
+    required this.onToggleCameraType,
     required this.aspectRatio,
     super.key,
   });
 
   final Widget preview;
   final VoidCallback onSnapPressed;
+  final VoidCallback onToggleCameraType;
   final double aspectRatio;
 
   @override
@@ -37,7 +39,18 @@ class PhotoboothPreview extends StatelessWidget {
                   ),
                   child: AspectRatio(
                     aspectRatio: aspectRatio,
-                    child: preview,
+                    child: AnimatedSwitcher(
+                      key: const Key('photoboothPreview_lens_direction'),
+                      duration: const Duration(milliseconds: 300),
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
+                            return FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            );
+                          },
+                      child: preview,
+                    ),
                   ),
                 ),
               ),
@@ -57,10 +70,35 @@ class PhotoboothPreview extends StatelessWidget {
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 24),
+            padding: const EdgeInsets.only(bottom: 20),
             child: ShutterButton(
               key: const Key('photoboothPreview_photo_shutterButton'),
               onCountdownComplete: onSnapPressed,
+            ),
+          ),
+        ),
+
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 32,bottom: 30),
+            child: Semantics(
+              focusable: true,
+              button: true,
+              child: Material(
+                clipBehavior: Clip.hardEdge,
+                shape: const CircleBorder(),
+                color: PhotoboothColors.transparent,
+                child: InkWell(
+                  key: const Key('photoboothPreview_photo_toggleCameraButton'),
+                  onTap: onToggleCameraType,
+                  child: Image.asset(
+                    'assets/icons/flip_camera_button_icon.png',
+                    height: 48,
+                    width: 48,
+                  ),
+                ),
+              ),
             ),
           ),
         ),

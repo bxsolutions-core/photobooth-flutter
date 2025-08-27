@@ -15,7 +15,6 @@ import 'package:pretty_qr_code/pretty_qr_code.dart';
 class ShareBody extends StatelessWidget {
   const ShareBody({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final image = context.select((PhotoboothBloc bloc) => bloc.state.image);
@@ -34,6 +33,7 @@ class ShareBody extends StatelessWidget {
     );
 
     debugPrint('SharePage.Body() ::-> ${file?.name}');
+    final qrData = 'dorcoprint://${file?.name}';
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
@@ -47,7 +47,6 @@ class ShareBody extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 30),
-
                   if (isUploadSuccess)
                     Container(
                       alignment: Alignment.center,
@@ -56,12 +55,12 @@ class ShareBody extends StatelessWidget {
                         maxHeight: 200,
                       ),
                       child: PrettyQrView.data(
-                        data: 'dorcoprint://${file?.name}',
+                        data: qrData,
                         decoration: const PrettyQrDecoration(
                           background: Colors.white,
-                          image: PrettyQrDecorationImage(
-                            image: AssetImage('assets/icons/dorco_icon.png'),
-                          ),
+                          // image: PrettyQrDecorationImage(
+                          //   image: AssetImage('assets/icons/dorco_icon.png'),
+                          // ),
                           quietZone: PrettyQrQuietZone.pixels(8),
                         ),
                       ),
