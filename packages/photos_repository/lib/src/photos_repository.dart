@@ -1,7 +1,10 @@
-import 'dart:typed_data';
+import 'dart:convert';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 import 'package:image_compositor/image_compositor.dart';
+import 'package:platform_helper/platform_helper.dart';
 
 /// {@template upload_photo_exception}
 /// Exception thrown when upload photo operation failed.
@@ -66,8 +69,8 @@ class PhotosRepository {
   PhotosRepository({
     required FirebaseStorage firebaseStorage,
     ImageCompositor? imageCompositor,
-  })  : _firebaseStorage = firebaseStorage,
-        _imageCompositor = imageCompositor ?? ImageCompositor();
+  }) : _firebaseStorage = firebaseStorage,
+       _imageCompositor = imageCompositor ?? ImageCompositor();
 
   final FirebaseStorage _firebaseStorage;
   final ImageCompositor _imageCompositor;
@@ -99,6 +102,7 @@ class PhotosRepository {
     }
 
     try {
+      await _trackPhotoEntry(fileName: fileName);
       await reference.putData(data);
     } catch (error, stackTrace) {
       throw UploadPhotoException(
@@ -149,6 +153,49 @@ class PhotosRepository {
       return true;
     } catch (_) {
       return false;
+    }
+  }
+
+  Future<String> _trackPhotoEntry({
+    required String fileName,
+  }) async {
+    try {
+      var uri = Uri.parse('https://eventpro.cheil.rocks/api/v1/dorcoroadshow/addPhotoEntry');
+
+      final platformHelper = PlatformHelper();
+      if (platformHelper.isRunningOnLocalhost) {
+        uri = Uri.parse(
+          'http://localhost/eventpro.cheil.rocks/api/v1/dorcoroadshow/addPhotoEntry',
+        );
+      } else {
+        if (kDebugMode) {
+          uri = Uri.parse(
+            'https://eventpro.cheil.rocks/api-stg/v1/dorcoroadshow/addPhotoEntry',
+          );
+        }
+      }
+      debugPrint('_trackPhotoEntry() ::-> $uri');
+
+      final res = await http.post(
+        uri,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          // 'Authorization': 'Bearer $token', // <-- optional
+        },
+        body: jsonEncode(<String, dynamic>{
+          'campaign_id': 'DORCO-2025-001',
+          'image_id': fileName,
+        }), // <-- JSON body
+      );
+
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        throw Exception('HTTP ${res.statusCode}: ${res.body}');
+      }
+
+      return 'true';
+    } catch (_) {
+      return 'false';
     }
   }
 

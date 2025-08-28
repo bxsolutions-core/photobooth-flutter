@@ -19,7 +19,6 @@ class MockClipboard {
         return _clipboardData;
       case 'Clipboard.setData':
         _clipboardData = methodCall.arguments as Object;
-        break;
     }
   }
 }

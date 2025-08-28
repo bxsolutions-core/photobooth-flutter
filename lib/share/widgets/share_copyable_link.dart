@@ -104,8 +104,8 @@ class ShareCopyableLinkState extends State<ShareCopyableLink> {
   }
 }
 
-final _copyButtonsMinimumSize = MaterialStateProperty.all(const Size(120, 40));
-final _copyButtonsShape = MaterialStateProperty.all(
+final WidgetStateProperty<Size> _copyButtonsMinimumSize = WidgetStateProperty.all(const Size(120, 40));
+final WidgetStateProperty<RoundedRectangleBorder> _copyButtonsShape = WidgetStateProperty.all(
   const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(10)),
   ),
@@ -125,7 +125,7 @@ class _CopyButton extends StatelessWidget {
     return ElevatedButton(
       style: ButtonStyle(
         minimumSize: _copyButtonsMinimumSize,
-        backgroundColor: MaterialStateProperty.all(PhotoboothColors.blue),
+        backgroundColor: WidgetStateProperty.all(PhotoboothColors.blue),
         shape: _copyButtonsShape,
       ),
       onPressed: onPressed,
@@ -148,7 +148,7 @@ class _CopiedButton extends StatelessWidget {
     return ElevatedButton(
       style: ButtonStyle(
         minimumSize: _copyButtonsMinimumSize,
-        backgroundColor: MaterialStateProperty.all(PhotoboothColors.green),
+        backgroundColor: WidgetStateProperty.all(PhotoboothColors.green),
         shape: _copyButtonsShape,
       ),
       onPressed: onPressed,

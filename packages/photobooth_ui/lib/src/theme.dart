@@ -13,7 +13,6 @@ class PhotoboothTheme {
       elevatedButtonTheme: _elevatedButtonTheme,
       outlinedButtonTheme: _outlinedButtonTheme,
       textTheme: _textTheme,
-      dialogBackgroundColor: PhotoboothColors.whiteBackground,
       dialogTheme: _dialogTheme,
       tooltipTheme: _tooltipTheme,
       bottomSheetTheme: _bottomSheetTheme,
@@ -95,7 +94,7 @@ class PhotoboothTheme {
   }
 
   static AppBarTheme get _appBarTheme {
-    return const AppBarTheme(color: PhotoboothColors.blue);
+    return const AppBarTheme(backgroundColor: PhotoboothColors.blue);
   }
 
   static ElevatedButtonThemeData get _elevatedButtonTheme {

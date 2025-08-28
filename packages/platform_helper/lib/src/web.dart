@@ -15,7 +15,14 @@ class PlatformHelper {
     final userAgent = _window.navigator.userAgent.toLowerCase();
     if (userAgent.contains('iphone') ||
         userAgent.contains('android') ||
-        userAgent.contains('ipad')) return true;
+        userAgent.contains('ipad')) {
+      return true;
+    }
     return false;
+  }
+
+  bool get isRunningOnLocalhost {
+    final host = _window.location.hostname;
+    return host == 'localhost' || host == '127.0.0.1' || host == '[::1]';
   }
 }

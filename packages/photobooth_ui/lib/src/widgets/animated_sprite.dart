@@ -85,7 +85,7 @@ class _AnimatedSpriteState extends State<AnimatedSprite> {
   late SpriteAnimationTicker _animationTicker;
 
   Timer? _timer;
-  var _status = _AnimatedSpriteStatus.loading;
+  _AnimatedSpriteStatus _status = _AnimatedSpriteStatus.loading;
   var _isPlaying = false;
 
   @override

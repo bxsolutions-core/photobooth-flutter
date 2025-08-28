@@ -136,7 +136,7 @@ enum OperatingSystem {
 
 /// Lazily initialized current operating system.
 // ignore: unnecessary_late
-late final _operatingSystem = _detectOperatingSystem();
+late final OperatingSystem _operatingSystem = _detectOperatingSystem();
 
 /// Returns the [OperatingSystem] the current browsers works on.
 ///

@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'dart:ui_web' as ui;
 import 'dart:html' as html;
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:ui_web' as ui;
 
 import 'package:camera_platform_interface/camera_platform_interface.dart';
 import 'package:camera_web/camera_web.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 

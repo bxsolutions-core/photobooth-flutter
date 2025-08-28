@@ -14,6 +14,8 @@ dependencies:
     sdk: flutter
   image_compositor:
     path: ../image_compositor
+  platform_helper:
+    path: ../platform_helper
 
 dev_dependencies:
   flutter_test:

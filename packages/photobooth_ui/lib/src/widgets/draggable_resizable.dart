@@ -486,10 +486,8 @@ class _DraggablePointState extends State<_DraggablePoint> {
         switch (widget.mode) {
           case _PositionMode.global:
             initPoint = details.focalPoint;
-            break;
           case _PositionMode.local:
             initPoint = details.localFocalPoint;
-            break;
         }
         if (details.pointerCount > 1) {
           baseAngle = angle;
@@ -505,13 +503,11 @@ class _DraggablePointState extends State<_DraggablePoint> {
             final dy = details.focalPoint.dy - initPoint.dy;
             initPoint = details.focalPoint;
             widget.onDrag?.call(Offset(dx, dy));
-            break;
           case _PositionMode.local:
             final dx = details.localFocalPoint.dx - initPoint.dx;
             final dy = details.localFocalPoint.dy - initPoint.dy;
             initPoint = details.localFocalPoint;
             widget.onDrag?.call(Offset(dx, dy));
-            break;
         }
         if (details.pointerCount > 1) {
           scaleFactor = baseScaleFactor * details.scale;

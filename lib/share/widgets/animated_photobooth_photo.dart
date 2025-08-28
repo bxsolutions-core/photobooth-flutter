@@ -81,7 +81,7 @@ class AnimatedPhotoboothPhotoLandscape extends StatelessWidget {
     ),
     showLoadingIndicator: false,
   );
-  static const aspectRatio = PhotoboothAspectRatio.landscape;
+  static const double aspectRatio = PhotoboothAspectRatio.landscape;
   static const left = 129.0;
   static const top = 88.0;
   static const right = 118.0;
@@ -164,7 +164,7 @@ class AnimatedPhotoboothPhotoPortrait extends StatelessWidget {
     ),
     showLoadingIndicator: false,
   );
-  static const aspectRatio = PhotoboothAspectRatio.portrait;
+  static const double aspectRatio = PhotoboothAspectRatio.portrait;
   static const left = 93.0;
   static const top = 120.0;
   static const right = 79.0;

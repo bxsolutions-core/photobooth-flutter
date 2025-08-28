@@ -90,7 +90,7 @@ class CountdownTimer extends StatelessWidget {
     final seconds =
         (_shutterCountdownDuration.inSeconds * controller.value).ceil();
     final theme = Theme.of(context);
-    return Container(
+    return SizedBox(
       height: 80,
       width: 80,
       // margin: const EdgeInsets.only(bottom: 15),
