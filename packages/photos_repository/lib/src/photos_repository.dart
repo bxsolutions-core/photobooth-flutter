@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
@@ -70,10 +71,13 @@ class PhotosRepository {
     required FirebaseStorage firebaseStorage,
     ImageCompositor? imageCompositor,
   }) : _firebaseStorage = firebaseStorage,
-       _imageCompositor = imageCompositor ?? ImageCompositor();
+       _imageCompositor = imageCompositor ?? ImageCompositor(),
+       _campaignID = 'DORCO-2025-001';
 
   final FirebaseStorage _firebaseStorage;
   final ImageCompositor _imageCompositor;
+  final String _campaignID;
+
 
   /// Uploads photo to the [FirebaseStorage] if it doesn't already exist
   /// and returns [ShareUrls].
@@ -82,6 +86,11 @@ class PhotosRepository {
     required Uint8List data,
     required String shareText,
   }) async {
+
+    FirebaseFirestore.instance.settings = const Settings(
+      persistenceEnabled: true,
+    );
+
     Reference reference;
     try {
       reference = _firebaseStorage.ref('uploads/$fileName');
@@ -102,8 +111,18 @@ class PhotosRepository {
     }
 
     try {
-      await _trackPhotoEntry(fileName: fileName);
+      // Add to Firebase Storage
       await reference.putData(data);
+
+      // Add to Firestore Database
+      final doc = await FirebaseFirestore.instance.collection('uploads').add({
+        'campaign_id': _campaignID,
+        'filename': fileName,
+      });
+
+      // Add to Plesk Database
+      await _trackPhotoEntry(fileName: fileName, firestoreID: doc.id);
+
     } catch (error, stackTrace) {
       throw UploadPhotoException(
         'Uploading photo $fileName failed. '
@@ -158,9 +177,12 @@ class PhotosRepository {
 
   Future<String> _trackPhotoEntry({
     required String fileName,
+    String? firestoreID,
   }) async {
     try {
-      var uri = Uri.parse('https://eventpro.cheil.rocks/api/v1/dorcoroadshow/addPhotoEntry');
+      var uri = Uri.parse(
+        'https://eventpro.cheil.rocks/_/api/v1/dorcoroadshow/addPhotoEntry',
+      );
 
       final platformHelper = PlatformHelper();
       if (platformHelper.isRunningOnLocalhost) {
@@ -170,7 +192,7 @@ class PhotosRepository {
       } else {
         if (kDebugMode) {
           uri = Uri.parse(
-            'https://eventpro.cheil.rocks/api-stg/v1/dorcoroadshow/addPhotoEntry',
+            'https://eventpro.cheil.rocks/_stg/api/v1/dorcoroadshow/addPhotoEntry',
           );
         }
       }
@@ -184,8 +206,9 @@ class PhotosRepository {
           // 'Authorization': 'Bearer $token', // <-- optional
         },
         body: jsonEncode(<String, dynamic>{
-          'campaign_id': 'DORCO-2025-001',
-          'image_id': fileName,
+          'campaign_id': _campaignID,
+          'filename': fileName,
+          'firestore_id': firestoreID,
         }), // <-- JSON body
       );
 
