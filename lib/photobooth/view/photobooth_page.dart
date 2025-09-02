@@ -116,7 +116,6 @@ class _PhotoboothViewState extends State<PhotoboothView> {
     debugPrint('here: $orientation, $aspectRatio');
     return Scaffold(
       extendBody: true,
-      backgroundColor: PhotoboothColors.peridotGreen,
       body: _PhotoboothBackground(
         aspectRatio: aspectRatio,
         onSnapPressed: () => _onSnapPressed(aspectRatio: aspectRatio),

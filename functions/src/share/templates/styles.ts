@@ -8,7 +8,7 @@ html, body {
 body {
   font-family: "Google Sans", sans-serif;
   font-size: 12px;
-  background-color: #00AB4E;
+  background-color: #ddd;
   display: flex;
   flex-direction: column;
   position: relative;
